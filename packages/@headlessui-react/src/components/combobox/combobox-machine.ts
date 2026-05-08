@@ -458,9 +458,11 @@ export class ComboboxMachine<T> extends Machine<State<T>, Actions<T>> {
       comboboxState: __demoMode ? ComboboxState.Open : ComboboxState.Closed,
       isTyping: false,
       options: [],
-      // @ts-expect-error TODO: Ensure we use the correct type
       virtual: virtual
-        ? { options: virtual.options, disabled: virtual.disabled ?? (() => false) }
+        ? {
+            options: virtual.options as T[],
+            disabled: (virtual.disabled ?? (() => false)) as (value: unknown) => boolean,
+          }
         : null,
       activeOptionIndex: null,
       activationTrigger: ActivationTrigger.Other,
