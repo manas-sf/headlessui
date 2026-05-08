@@ -458,7 +458,6 @@ function PanelFn<TTag extends ElementType = typeof DEFAULT_PANEL_TAG>(
       as: Fragment,
       children: (
         <Portal>
-          {/** @ts-ignore TODO: Figure out why `panelRef` is not working from a TypeScript perspective. */}
           <Description ref={panelRef} {...theirProps} />
         </Portal>
       ),
