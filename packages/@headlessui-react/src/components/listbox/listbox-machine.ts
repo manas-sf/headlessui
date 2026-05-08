@@ -443,11 +443,10 @@ let reducers: {
 }
 
 export class ListboxMachine<T> extends Machine<State<T>, Actions<T>> {
-  static new({ id, __demoMode = false }: { id: string; __demoMode?: boolean }) {
-    return new ListboxMachine({
+  static new<T>({ id, __demoMode = false }: { id: string; __demoMode?: boolean }) {
+    return new ListboxMachine<T>({
       id,
-      // @ts-expect-error TODO: Re-structure such that we don't need to ignore this
-      dataRef: { current: {} },
+      dataRef: { current: {} as State<T>['dataRef']['current'] },
       listboxState: __demoMode ? ListboxStates.Open : ListboxStates.Closed,
       options: [],
       searchQuery: '',
