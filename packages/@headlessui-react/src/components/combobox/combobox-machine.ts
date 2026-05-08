@@ -453,8 +453,7 @@ export class ComboboxMachine<T> extends Machine<State<T>, Actions<T>> {
   }) {
     return new ComboboxMachine({
       id,
-      // @ts-expect-error TODO: Re-structure such that we don't need to ignore this
-      dataRef: { current: {} },
+      dataRef: { current: {} as State<T>['dataRef']['current'] },
       comboboxState: __demoMode ? ComboboxState.Open : ComboboxState.Closed,
       isTyping: false,
       options: [],
