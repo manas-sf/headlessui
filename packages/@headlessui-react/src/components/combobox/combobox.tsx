@@ -516,6 +516,7 @@ export type ComboboxInputProps<
     displayValue?: (item: TType) => string
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
     autoFocus?: boolean
+    type?: React.HTMLInputTypeAttribute
   }
 >
 
@@ -536,7 +537,6 @@ function InputFn<
     displayValue,
     disabled = data.disabled || false,
     autoFocus = false,
-    // @ts-ignore: We know this MAY NOT exist for a given tag but we only care when it _does_ exist.
     type = 'text',
     ...theirProps
   } = props
