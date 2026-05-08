@@ -27,8 +27,7 @@ export function useSyncRefs<TType>(
   return refs.every(
     (ref) =>
       ref == null ||
-      // @ts-expect-error
-      ref?.[Optional]
+      (ref as { [Optional]?: boolean })[Optional]
   )
     ? undefined
     : syncRefs
