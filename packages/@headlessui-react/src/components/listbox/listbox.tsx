@@ -810,9 +810,7 @@ export type ListboxOptionProps<
 
 function OptionFn<
   TTag extends ElementType = typeof DEFAULT_OPTION_TAG,
-  // TODO: One day we will be able to infer this type from the generic in Listbox itself.
-  // But today is not that day..
-  TType = Parameters<typeof ListboxRoot>[0]['value'],
+  TType = unknown,
 >(props: ListboxOptionProps<TTag, TType>, ref: Ref<HTMLElement>) {
   let internalId = useId()
   let {
@@ -1029,10 +1027,7 @@ export interface _internal_ComponentListboxOptions extends HasDisplayName {
 }
 
 export interface _internal_ComponentListboxOption extends HasDisplayName {
-  <
-    TTag extends ElementType = typeof DEFAULT_OPTION_TAG,
-    TType = Parameters<typeof ListboxRoot>[0]['value'],
-  >(
+  <TTag extends ElementType = typeof DEFAULT_OPTION_TAG, TType = unknown>(
     props: ListboxOptionProps<TTag, TType> & RefProp<typeof OptionFn>
   ): React.JSX.Element
 }
